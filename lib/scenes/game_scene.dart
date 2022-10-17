@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:isolates/entities/bullet.dart';
+import 'package:isolates/entities/player.dart';
+import 'package:isolates/scenes/app_scene.dart';
 
 
 import '../utilits/global_vars.dart';
