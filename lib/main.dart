@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // import 'package:flutter/services.dart';
@@ -13,13 +14,22 @@ void isolateFunc(int finalNum) {
   int num = 0;
   while (num < finalNum) {
     num++;
-    if((num % 100) == 0) {
+    if ((num % 100) == 0) {
       print('Isolate = $num');
     }
   }
 }
 
-
+int computeFunc(int finalNum) {
+  int num = 0;
+  while (num < finalNum) {
+    num++;
+    if ((num % 100) == 0) {
+      print('Compute = $num');
+    }
+  }
+  return num;
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -59,8 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-
     });
+  }
+
+  Future<void> runCompute() async {
+    _counter = await compute(computeFunc, 2000);
+    setState(() {});
   }
 
   @override
@@ -80,6 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(
+              child: const Text('Isolate'),
+              onPressed: () async {
+                await runCompute();
+              },
+            )
           ],
         ),
       ),
