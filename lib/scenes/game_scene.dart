@@ -21,7 +21,7 @@ class GameScene extends AppScene {
         Positioned(
             top: 0,
             left: 0,
-            child: Container(
+            child: SizedBox(
               width: GlobalVars.screenWidth / 2,
               height: GlobalVars.screenHeight,
               child: GestureDetector(
@@ -32,7 +32,7 @@ class GameScene extends AppScene {
         Positioned(
             top: 0,
             left: GlobalVars.screenWidth / 2,
-            child: Container(
+            child: SizedBox(
               width: GlobalVars.screenWidth / 2,
               height: GlobalVars.screenHeight / 2,
               child: GestureDetector(
@@ -42,7 +42,7 @@ class GameScene extends AppScene {
         Positioned(
             top: GlobalVars.screenHeight / 2,
             left: GlobalVars.screenWidth / 2,
-            child: Container(
+            child: SizedBox(
               width: GlobalVars.screenWidth / 2,
               height: GlobalVars.screenHeight / 2,
               child: GestureDetector(
