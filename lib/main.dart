@@ -10,26 +10,30 @@ void main() {
   SystemChrome.setPreferredOrientations(
           [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight])
       .whenComplete(() {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom],
+    );
 
-    runApp(MaterialApp(
+    runApp(
+      MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
           child: Scaffold(
             body: MyApp(),
           ),
-        )));
+        ),
+      ),
+    );
   });
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void didChangeDependencies() {
     initGame(context);
@@ -39,10 +43,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/background.png"), fit: BoxFit.fill)),
-        child: Game());
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/background.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Game(),
+    );
   }
 
   void initGame(BuildContext context) {
